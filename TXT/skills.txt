@@ -1,0 +1,12 @@
+postman
+javascript
+sql
+dev tools
+python
+jmeter
+terminal
+scrum
+xcode
+bash
+fiddler
+charles
