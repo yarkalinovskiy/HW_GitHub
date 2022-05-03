@@ -1,13 +1,13 @@
 <xml>
-	<postman>
-        <javascript>
-        <sql>
-        <dev tools>
-        <python>
-        <jmeter>
-        <terminal>
-        <scrum>
-        <xcode>
-        <bash>
-        <fiddler>
-        <charles>
+	<sk1>postman</sk1>
+        <sk2>javascript</sk2>
+        <sk3>sql</sk3>
+        <sk4>dev tools</sk4>
+        <sk5>python</sk5>
+        <sk6>jmeter</sk6>
+        <sk7>terminal</sk7>
+        <sk8>scrum</sk8>
+        <sk9>xcode</sk9>
+        <sk10>bash</sk10>
+        <sk11>fiddler</sk11>
+        <sk12>charles</sk12>
