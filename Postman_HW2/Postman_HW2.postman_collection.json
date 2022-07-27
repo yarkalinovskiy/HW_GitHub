@@ -1,0 +1,158 @@
+{
+	"info": {
+		"_postman_id": "ffff4f5d-7ec4-4f6b-b669-61547331e756",
+		"name": "Postman_HW2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14507092"
+	},
+	"item": [
+		{
+			"name": "EP1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Body is correct\", function () {",
+							"    pm.response.to.have.body(\"This is the first responce from server!\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://162.55.220.72:5005/first",
+					"protocol": "http",
+					"host": [
+						"162",
+						"55",
+						"220",
+						"72"
+					],
+					"port": "5005",
+					"path": [
+						"first"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EP2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"",
+							"let json = pm.response.json();",
+							"",
+							"",
+							"pm.test(\"name\", function () {",
+							"    pm.expect(json.name).to.eql(\"Yaroslav\");",
+							"});",
+							"",
+							"pm.test(\"age\", function () {",
+							"    pm.expect(json.age).to.eql(\"28\");",
+							"});",
+							"",
+							"pm.test(\"salary\", function () {",
+							"    pm.expect(json.salary).to.eql(500);",
+							"});",
+							"",
+							"",
+							"let rec = request.data;",
+							"",
+							"pm.test(\"name\", function () {",
+							"    pm.expect(json.name).to.eql(rec.name);",
+							"});",
+							"",
+							"pm.test(\"age\", function () {",
+							"    pm.expect(json.age).to.eql(rec.age);",
+							"});",
+							"",
+							"pm.test(\"salary\", function () {",
+							"    pm.expect(json.salary).to.eql(Number(rec.salary));",
+							"});",
+							"",
+							"",
+							"",
+							"// или так",
+							"// Number = +",
+							"",
+							"pm.test(\"salary\", function () {",
+							"    pm.expect(json.salary).to.eql(+rec.salary);",
+							"});",
+							"",
+							"console.log (json.family)",
+							"",
+							"pm.test(\"u_salary_1_5_year\", function () {",
+							"    pm.expect(json.family.u_salary_1_5_year).to.eql(rec.salary*4);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Yaroslav",
+							"type": "text"
+						},
+						{
+							"key": "age",
+							"value": "28",
+							"type": "text"
+						},
+						{
+							"key": "salary",
+							"value": "500",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://162.55.220.72:5005/user_info_3",
+					"protocol": "http",
+					"host": [
+						"162",
+						"55",
+						"220",
+						"72"
+					],
+					"port": "5005",
+					"path": [
+						"user_info_3"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
