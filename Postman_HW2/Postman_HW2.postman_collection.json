@@ -15,7 +15,6 @@
 						"exec": [
 							"// 1. Отправить запрос.",
 							"",
-							"",
 							"// 2. Статус код 200",
 							"pm.test(\"Status code is 200\", function () {",
 							"    pm.response.to.have.status(200);",
@@ -177,7 +176,6 @@
 						"exec": [
 							"// 1. Отправить запрос.",
 							"",
-							"",
 							"// 2. Статус код 200",
 							"pm.test(\"Status code 200\", function () {",
 							"    pm.response.to.have.status(200);",
@@ -202,7 +200,7 @@
 							"});",
 							"",
 							"// 7. Спарсить request.",
-							"let rec = pm.request.data",
+							"let rec = request.data",
 							"",
 							"// 8. Вывести в консоль параметр family из response.",
 							"console.log(json.family)",
@@ -269,6 +267,148 @@
 					"port": "5005",
 					"path": [
 						"object_info_3"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Yaroslav"
+						},
+						{
+							"key": "age",
+							"value": "28"
+						},
+						{
+							"key": "salary",
+							"value": "500"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EP4",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// 1. Отправить запрос.",
+							"",
+							"// 2. Статус код 200",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"// 3. Спарсить response body в json.",
+							"let json = pm.response.json()",
+							"",
+							"// 4. Спарсить request.",
+							"let req = request.data",
+							"",
+							"// 5. Проверить, что name в ответе равно name s request (name забрать из request.)",
+							"pm.test(\"name\" , function () {",
+							"    pm.expect(json.name).to.eql(req.name);",
+							"    });",
+							"",
+							"// 6. Проверить, что age в ответе равно age из request (age забрать из request.)",
+							"pm.test(\"age\" , function () {",
+							"    pm.expect(json.age).to.eql(+req.age);",
+							"    });",
+							"",
+							"// 7. Вывести в консоль параметр salary из request.",
+							"console.log(req.salary);",
+							"",
+							"// 8. Вывести в консоль параметр salary из response.",
+							"console.log(json.salary);",
+							"",
+							"// 9. Вывести в консоль 0-й элемент параметра salary из response.",
+							"console.log(json.salary[0]);",
+							"",
+							"// 10. Вывести в консоль 1-й элемент параметра salary параметр salary из response.",
+							"console.log(json.salary[1]);",
+							"",
+							"// 11. Вывести в консоль 2-й элемент параметра salary параметр salary из response.",
+							"console.log(json.salary[2]);",
+							"",
+							"// 12. Проверить, что 0-й элемент параметра salary равен salary из request (salary забрать из request.)",
+							"pm.test(\"0_salary\", function () {",
+							"    pm.expect(req.salary[0]).to.eql(req.salary[0]);",
+							"});",
+							"",
+							"// 13. Проверить, что 1-й элемент параметра salary равен salary*2 из request (salary забрать из request.)",
+							"pm.test(\"1_salary\", function () {",
+							"    pm.expect(req.salary[1]).to.eql(req.salary[1]);",
+							"});",
+							"",
+							"// 14. Проверить, что 2-й элемент параметра salary равен salary*3 из request (salary забрать из request.)",
+							"pm.test(\"2_salary\", function () {",
+							"    pm.expect(req.salary[2]).to.eql(req.salary[2]);",
+							"});",
+							"",
+							"// 15. Создать в окружении переменную name",
+							"pm.environment.set(\"name\", \"\");",
+							"",
+							"// 16. Создать в окружении переменную age",
+							"pm.environment.set(\"age\", \"\");",
+							"",
+							"// 17. Создать в окружении переменную salary",
+							"pm.environment.set(\"salary\", \"\");",
+							"",
+							"// 18. Передать в окружение переменную name",
+							"pm.environment.set(\"name\", \"Mariya\");",
+							"",
+							"// 19. Передать в окружение переменную age",
+							"pm.environment.set(\"age\", \"28\");",
+							"",
+							"// 20. Передать в окружение переменную salary",
+							"pm.environment.set(\"salary\", \"5000\");",
+							"",
+							"// 21. Написать цикл который выведет в консоль по порядку элементы списка из параметра salary.",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Yaroslav",
+							"type": "text"
+						},
+						{
+							"key": "age",
+							"value": "28",
+							"type": "text"
+						},
+						{
+							"key": "salary",
+							"value": "500",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://162.55.220.72:5005/object_info_4?name=Yaroslav&age=28&salary=500",
+					"protocol": "http",
+					"host": [
+						"162",
+						"55",
+						"220",
+						"72"
+					],
+					"port": "5005",
+					"path": [
+						"object_info_4"
 					],
 					"query": [
 						{
